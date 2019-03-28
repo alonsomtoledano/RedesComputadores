@@ -1,0 +1,7 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../practica1.srcs/sources_1/new/decodificador4_16.vhd" \
+"../../../../practica1.srcs/sources_1/new/tb_decodificador4_16.vhd" \
+
+# Do not sort compile order
+nosort
