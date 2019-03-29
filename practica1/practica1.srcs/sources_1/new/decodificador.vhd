@@ -34,25 +34,12 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity decodificador is
     -- Hamming(9,5)
     Port (r: in std_logic_vector(8 downto 0);
-          m: out std_logic_vector(4 downto 0)
+          m: out std_logic_vector(4 downto 0);
+          error: out std_logic_vector(3 downto 0)
     );
 end decodificador;
 
 architecture Structural of decodificador is
-
-    component mux2_1 is
-        Port (X: in std_logic_vector(1 downto 0);
-              SEL: in std_logic;
-              Y: out std_logic
-        );
-    end component;
-    
-    component decodificador4_16 is
-        Port (X: in std_logic_vector(4 downto 0);
-              Y: out std_logic_vector(15 downto 0)
-        );  
-    end component;
-    
     signal p_new: std_logic_vector(3 downto 0); -- Encontrar posición error
     signal p_old: std_logic_vector(3 downto 0);
 begin
@@ -62,13 +49,23 @@ begin
     p_new(2) <= r(4) xor r(3) xor r(2) xor r(5);
     p_new(3) <= r(0) xor r(1);
     
-    m(4) <= r(6);
-    m(3) <= r(4);
-    m(2) <= r(3);
-    m(1) <= r(2);
-    m(0) <= r(0);
+    error <= p_new;
     
-    -- Instancias aquí: se utiliza el deco y las puertas para cada entrada para
-    -- corregir el error y sacar la salida de 5 BITS.
+    process(r, p_new) begin
+        case p_new is
+            when "0011" => 
+               m <= not r(6) & r(4) & r(3) & not r(2) & r(0);
+            when "0101" => 
+                m <= r(6) & not r(4) & r(3) & r(2) & r(0);
+            when "0110" => 
+                 m <= r(6) & r(4) & not r(3) & r(2) & r(0);
+            when "0111" =>
+                 m <= r(6) & r(4) & r(3) & not r(2) & r(0);
+            when "1001" => 
+                 m <= r(6) & r(4) & r(3) & r(2) & not r(0);
+            when others => 
+                m <= r(6) & r(4) & r(3) & r(2) & r(0);
+        end case X;
+    end process;   
     
 end Structural;

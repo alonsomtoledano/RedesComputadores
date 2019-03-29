@@ -49,7 +49,7 @@ architecture Behavioral of tb_decodificador is
 begin
     DUT: decodificador port map(r, m, error);
     process begin
-        r <= "000100100";
+        r <= "001100101";
         wait for 10ns;
     end process;
 end Behavioral;

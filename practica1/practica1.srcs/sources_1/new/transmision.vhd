@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 03/28/2019 08:19:54 AM
+-- Create Date: 03/28/2019 08:12:01 PM
 -- Design Name: 
--- Module Name: tb_decodificador4_16 - Behavioral
+-- Module Name: transmision - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -31,25 +31,15 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity tb_decodificador4_16 is
---  Port ( );
-end tb_decodificador4_16;
+entity transmision is
+    Port (data: in std_logic_vector(15 downto 0);
+          stuff: out std_logic_vector(15 downto 0)
+    );
+end transmision;
 
-architecture Behavioral of tb_decodificador4_16 is
-    component decodificador4_16 is
-        Port (X: in std_logic_vector(4 downto 0);
-              Y: out std_logic_vector(15 downto 0)
-        ); 
-    end component;
-    signal X: std_logic_vector(4 downto 0);
-    signal Y: std_logic_vector(15 downto 0);
-begin
-    DUT: decodificador4_16 port map(X, Y);
+architecture Behavioral of transmision is
     
-    process begin
-        X <= "1111";
-        wait for 10ns;
-        wait;
-    end process;
+begin
+
 
 end Behavioral;
