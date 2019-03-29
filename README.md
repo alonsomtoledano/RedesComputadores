@@ -8,6 +8,7 @@ El objetivo de esta práctica es diseñar un sistema hardwareque integre todas l
 - [x] Decodificación Hamming
 - [ ] División de tramas
 - [ ] Padding
+- [ ] Memoria del trabajo
 
 ## Compañeros
 
