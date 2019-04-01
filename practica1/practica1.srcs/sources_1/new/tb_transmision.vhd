@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 03/27/2019 06:32:16 PM
+-- Create Date: 04/01/2019 04:35:59 PM
 -- Design Name: 
--- Module Name: tb_decodificador - Behavioral
+-- Module Name: tb_transmision - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -31,25 +31,30 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity tb_decodificador is
+entity tb_transmision is
 --  Port ( );
-end tb_decodificador;
+end tb_transmision;
 
-architecture Behavioral of tb_decodificador is
-    component decodificador is
-        Port (r: in std_logic_vector(8 downto 0);
-          m: out std_logic_vector(4 downto 0);
-          error: out std_logic_vector(3 downto 0)
+architecture Behavioral of tb_transmision is
+    component transmision is
+        Port (CLK, RST, X: in std_logic;
+		      Y: buffer std_logic
         );
     end component;
     
-    signal m: std_logic_vector(4 downto 0);
-    signal r: std_logic_vector(8 downto 0);
-    signal error: std_logic_vector(3 downto 0);
+    signal CLK, RST, X, Y: std_logic;
 begin
-    DUT: decodificador port map(r, m, error);
+    DUT: transmision port map(CLK, RST, X, Y);
+    
     process begin
-        r <= "000100100";
-        wait for 10ns;
+        RST <= '1'; RST <= '0';
+        X <= '0'; wait for 10ns;
+        X <= '1'; wait for 10ns;
+        X <= '0'; wait for 10ns;
+        X <= '1'; wait for 10ns;
+        X <= '0'; wait for 10ns;
+        X <= '1'; wait for 10ns;
+        X <= '1'; wait for 10ns;
     end process;
+
 end Behavioral;

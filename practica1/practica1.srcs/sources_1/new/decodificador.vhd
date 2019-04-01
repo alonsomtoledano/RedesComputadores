@@ -54,7 +54,7 @@ begin
     process(r, p_new) begin
         case p_new is
             when "0011" => 
-               m <= not r(6) & r(4) & r(3) & not r(2) & r(0);
+               m <= not r(6) & r(4) & r(3) & r(2) & r(0);
             when "0101" => 
                 m <= r(6) & not r(4) & r(3) & r(2) & r(0);
             when "0110" => 
