@@ -38,23 +38,59 @@ end tb_transmision;
 architecture Behavioral of tb_transmision is
     component transmision is
         Port (CLK, RST, X: in std_logic;
-		      Y: buffer std_logic
+		      Y, Z: out std_logic
         );
     end component;
     
-    signal CLK, RST, X, Y: std_logic;
+    signal CLK, RST, X, Y, Z: std_logic;
 begin
-    DUT: transmision port map(CLK, RST, X, Y);
+    DUT: transmision port map(CLK, RST, X, Y, Z);
     
     process begin
-        RST <= '1'; RST <= '0';
-        X <= '0'; wait for 10ns;
-        X <= '1'; wait for 10ns;
-        X <= '0'; wait for 10ns;
-        X <= '1'; wait for 10ns;
-        X <= '0'; wait for 10ns;
-        X <= '1'; wait for 10ns;
-        X <= '1'; wait for 10ns;
+        CLK <= '1'; wait for 10ns;
+        CLK <= '0'; wait for 10ns;
+    end process;
+    
+    process begin 
+        RST <= '1'; wait for 10ns;
+        RST <= '0'; wait;
+    end process;
+
+    
+    process begin
+        -- Bandera fin
+--        X <= '0'; wait for 20ns;
+--        X <= '1'; wait for 20ns;
+--        X <= '0'; wait for 20ns;
+--        X <= '0'; wait for 20ns;
+--        X <= '0'; wait for 20ns;
+--        X <= '0'; wait for 20ns;
+--        X <= '0'; wait for 20ns;
+        ------------------------
+        -- Bandera inicio
+--        X <= '0'; wait for 20ns;
+--        X <= '1'; wait for 20ns;
+--        X <= '0'; wait for 20ns;
+--        X <= '1'; wait for 20ns;
+--        X <= '0'; wait for 20ns;
+--        X <= '1'; wait for 20ns;
+--        X <= '1'; wait for 20ns;
+        --------------------------
+        -- Ejemplo
+        X <= '0'; wait for 20ns;
+        X <= '1'; wait for 20ns;
+        X <= '0'; wait for 20ns;
+        X <= '0'; wait for 20ns;
+        X <= '1'; wait for 20ns;
+        X <= '0'; wait for 20ns;
+        X <= '1'; wait for 20ns;
+        X <= '0'; wait for 20ns;
+        X <= '0'; wait for 20ns;
+        X <= '0'; wait for 20ns;
+        X <= '0'; wait for 20ns;
+        X <= '0'; wait for 20ns;
+        X <= '1'; wait for 20ns;
+        wait;
     end process;
 
 end Behavioral;

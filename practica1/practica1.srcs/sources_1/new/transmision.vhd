@@ -33,7 +33,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity transmision is
     Port (CLK, RST, X: in std_logic;
-		  Y: buffer std_logic
+		  Y, Z: out std_logic
     );
 end transmision;
 
@@ -57,77 +57,89 @@ begin
 	process(current_state, X) begin
 		case current_state is
 			when S0 => 
-				Y <= '1';
+			    Y <= X;
+			    Z <= '1';
 				if(X = '1') then
 					next_state <= S0;
 				else
 					next_state <= S1;
 				end if;
 			when S1 =>
-				Y <= '1';
+			    Y <= X;
+			    Z <= '1';
 				if(X = '1') then
 					next_state <= S2;
 				else
 					next_state <= S1;
 				end if;
 			when S2 => 
-				Y <= '1';
+			    Y <= X;
+			    Z <= '1';
 				if(X = '1') then
 					next_state <= S0;
 				else
 					next_state <= S3;
 				end if;
 			when S3 =>
-				Y <= '1';
+			    Y <= X;
+			    Z <= '1';
 				if(X = '1') then
 					next_state <= S4;
 				else
 					next_state <= S8;
 				end if;
-			when S4 => 
-				Y <= '1';
+			when S4 =>
+			    Y <= X; 
+			    Z <= '1';
 				if(X = '1') then
 					next_state <= S0;
 				else
 					next_state <= S5;
 				end if;
 			when S5 =>
-				Y <= '1';
+			    Y <= X; 
+			    Z <= '1';
 				if(X = '1') then
 					next_state <= S6;
 				else
 					next_state <= S8;
 				end if;
 			when S6 =>
-				Y <= '1';
+			    Y <= X; 
+			    Z <= '1';
 				if(X = '1') then
 					next_state <= S7;
 				else
 					next_state <= S3;
 				end if;
 			when S7 =>
-				Y <= '0';
+				Y <= X;
+				Z <= '0';
 				if(X = '1') then
 					next_state <= S1;
 				else
 					next_state <= S1;
 				end if;
+				Y <= X;
 			when S8 =>
-				Y <= '1';
+			    Y <= X;
+			    Z <= '1'; 
 				if(X = '1') then
 					next_state <= S0;
 				else
 					next_state <= S9;
 				end if;
 			when S9 =>
-				Y <= '1';
+			    Y <= X;
+			    Z <= '1'; 
 				if(X = '1') then
 					next_state <= S0;
 				else
 					next_state <= S10;
 				end if;
 			when S10 =>
-				Y <= '1';
+			    Y <= X; 
+			    Z <= '1';
 				if(X = '1') then
 					next_state <= S0;
 				else
