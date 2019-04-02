@@ -46,9 +46,9 @@ begin
 		if(rising_edge(CLK)) then
 			if(RST = '1') then
 				current_state <= S0;
+			else
+			    current_state <= next_state;
 			end if;
-		else
-			current_state <= next_state;
 		end if;
 	end process;
     

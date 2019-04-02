@@ -45,17 +45,27 @@ architecture Behavioral of tb_recepcion is
     signal CLK, RST, X, Y: std_logic;
 begin
     DUT: recepcion port map(CLK, RST, X, Y);
-        
+    
     process begin
-        X <= '0'; wait for 10ns;
-        X <= '1'; wait for 10ns;
-        X <= '0'; wait for 10ns;
-        X <= '0'; wait for 10ns;
-        X <= '0'; wait for 10ns;
-        X <= '0'; wait for 10ns;
-        X <= '0'; wait for 10ns;
-        X <= '1'; wait for 10ns;
-        X <= '1'; wait for 10ns;
+        CLK <= '1'; wait for 10ns;
+        CLK <= '0'; wait for 10ns;
+    end process;
+    
+    process begin 
+        RST <= '1'; wait for 10ns;
+        RST <= '0'; wait;
+    end process;
+    
+    process begin
+        X <= '0'; wait for 20ns;
+        X <= '1'; wait for 20ns;
+        X <= '0'; wait for 20ns;
+        X <= '0'; wait for 20ns;
+        X <= '0'; wait for 20ns;
+        X <= '0'; wait for 20ns;
+        X <= '0'; wait for 20ns;
+        X <= '1'; wait for 20ns;
+        X <= '1'; wait for 20ns;
     end process;
     
 end Behavioral;

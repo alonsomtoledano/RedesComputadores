@@ -55,27 +55,8 @@ begin
         RST <= '1'; wait for 10ns;
         RST <= '0'; wait;
     end process;
-
     
     process begin
-        -- Bandera fin
---        X <= '0'; wait for 20ns;
---        X <= '1'; wait for 20ns;
---        X <= '0'; wait for 20ns;
---        X <= '0'; wait for 20ns;
---        X <= '0'; wait for 20ns;
---        X <= '0'; wait for 20ns;
---        X <= '0'; wait for 20ns;
-        ------------------------
-        -- Bandera inicio
---        X <= '0'; wait for 20ns;
---        X <= '1'; wait for 20ns;
---        X <= '0'; wait for 20ns;
---        X <= '1'; wait for 20ns;
---        X <= '0'; wait for 20ns;
---        X <= '1'; wait for 20ns;
---        X <= '1'; wait for 20ns;
-        --------------------------
         -- Ejemplo
         X <= '0'; wait for 20ns;
         X <= '1'; wait for 20ns;
