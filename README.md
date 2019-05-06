@@ -10,8 +10,15 @@ El objetivo de esta práctica es programar y evaluar el rendimiento de diversos 
 - Algoritmo de inundación
 - Algoritmo del vector distancia
 
+# Práctica 3: Capa de transporte
+
+El objetivo de esta práctica es programar un cliente y un servidor echo en UDP y en TCP para detectar las diferencias estudiadas en las sesiones de teoría.
+
+- UDP
+- TCP
+
 ## Compañeros
 
 de la Hoz García, José Luis
 <br>
-Martín-Toledano Mauriño-García, Alonso
+Martín-Toledano García-Mauriño, Alonso
