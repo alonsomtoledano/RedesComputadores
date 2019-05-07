@@ -4,27 +4,30 @@ import java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+/**
+ * TCPClient manage to connect to a TCP server.
+ */
 public class TCPClient {
 	
-	private static long[] latency;
-	private final static int NUMBER = 400;
+	private static long[] latency;	// attribute that store the latency 
+	private final static int NUMBER = 400;	// attribute that store the maximum of messages to send
 	
 	public static void main(String[] args) {
 		latency = new long[NUMBER];
 		Socket s = null;
 		try {
 			for(int i = 0; i < NUMBER; i++) {
-				int serverPort = 7896;
-				s = new Socket("localhost", serverPort);
+				int serverPort = 7896;	// Port of the server
+				s = new Socket("localhost", serverPort);  // Establish connection with this host and connects to the server port.
 				DataOutputStream out = new DataOutputStream(s.getOutputStream());
 				BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-				out.writeUTF("hola");
+				out.writeUTF("hola"); // Send a message to the server
 				long timeSentInNanoseconds = System.nanoTime();
-				System.out.println(in.readLine());
+				System.out.println(in.readLine()); // Receive a message from the server
 				long timeReceiveInNanoseconds = System.nanoTime();
-				latency[i] = timeReceiveInNanoseconds - timeSentInNanoseconds;
+				latency[i] = timeReceiveInNanoseconds - timeSentInNanoseconds; // Calculate the latency of each message.
 			}
-			writeFile();
+			writeFile(); // Calls a method that write in a file the latencies.
 		}
 		catch (UnknownHostException e) {
 			System.out.println("Socket: " + e.getMessage());
@@ -43,6 +46,9 @@ public class TCPClient {
 		}
 	}
 	
+	/**
+	 * writeFile manages to create a file and set the latencies in csv format.
+	 */
 	public static void writeFile() {
 		FileOutputStream fos = null;
 		try {

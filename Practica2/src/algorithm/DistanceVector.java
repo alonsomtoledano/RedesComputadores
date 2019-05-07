@@ -1,4 +1,4 @@
-package dev.joseluis.algorithm;
+package algorithm;
 
 public class DistanceVector {
 }
