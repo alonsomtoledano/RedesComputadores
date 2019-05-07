@@ -1,4 +1,4 @@
-package dev.joseluis;
+package graph;
 
 public class Graph {
 
@@ -10,16 +10,24 @@ public class Graph {
         adjMatrix = new int[numVertices][numVertices];
     }
 
-    public void addEdge(int i, int j, int value) {
+    public void addNode(int i, int j, int value) {
         adjMatrix[i][j] = value;
     }
 
-    public void removeEdge(int i, int j) {
+    public void removeNode(int i, int j) {
         adjMatrix[i][j] = 0;
     }
 
-    public boolean isEdge(int i, int j) {
+    public boolean isNode(int i, int j) {
         return adjMatrix[i][j] != 0;
+    }
+    
+    public int getNumberOfNodes() {
+    	return numVertices;
+    }
+    
+    public int getNode(int i, int j) {
+    	return adjMatrix[i][j];
     }
 
     public String toString() {
