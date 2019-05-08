@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
 
-import graph.Graph;
+import data.structure.Graph;
 
 public class Flooding {
 	
